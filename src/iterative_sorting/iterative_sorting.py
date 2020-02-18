@@ -18,7 +18,7 @@ def selection_sort(arr):
         arr[cur_index] = smallest_num
 
         # TO-DO: swap
-
+    print(arr)
     return arr
 
 # TO-DO:  implement the Bubble Sort function below
@@ -35,11 +35,11 @@ def bubble_sort(arr):
             if arr[i] > arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
                 did_swap += 1
-                
+
         # notifies the while loop to stop if no swaps were preformed
         if did_swap == 0:
             check_swap = False
-
+    print(arr)
     return arr
 
 # STRETCH: implement the Count Sort function below

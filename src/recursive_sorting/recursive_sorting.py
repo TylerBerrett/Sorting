@@ -1,10 +1,35 @@
 # TO-DO: complete the helpe function below to merge 2 sorted arrays
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
+    # sets a list to the size I need and the code below replaces teh 0's with the correct numbers
     merged_arr = [0] * elements
     # TO-DO
-    
 
+    i = 0
+    j = 0
+    k = 0
+    # while left or right is not empty it will compare numbers until one side is empty
+    while i < len(arrA) and j < len(arrB) and k < elements:
+        if arrA[i] < arrB[j]:
+            merged_arr[k] = arrA[i]
+            i += 1
+
+        else:
+            merged_arr[k] = arrB[j]
+            j += 1
+        k += 1
+
+    # these two while loops are for grabbing the left elements on either the right side or left and adding it to the end
+    # of the merged_arr
+    while i < len(arrA):
+        merged_arr[k] = arrA[i]
+        i += 1
+        k += 1
+
+    while j < len(arrB):
+        merged_arr[k] = arrB[j]
+        j += 1
+        k += 1
 
     return merged_arr
 
@@ -16,24 +41,16 @@ def merge(arrA, arrB):
 def merge_sort(arr):
     # TO-DO
     if len(arr) > 1:
-        
-        if arr[0] > arr[1]:
-            arr[0], arr[1] = arr[1], arr[0]
 
-        if len(arr) == 3:
-            if arr[1] > arr[2]:
-                arr[1], arr[2] = arr[2], arr[1]
-                if arr[1] < arr[0]:
-                    arr[0], arr[1] = arr[1], arr[0]
-
-        half = len(arr) / 2
+        # Splits array in half until the length of the array is 1
+        half = round(len(arr) / 2)
         return merge(merge_sort(arr[:int(half)]), merge_sort(arr[int(half): len(arr)]))
 
     else:
         return arr
 
 
-test = [4, 1, 53, 89, 46, 33, 14, 56, 98, 123]
+test = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
 
 print(merge_sort(test))
 
